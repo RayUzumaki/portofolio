@@ -1,0 +1,879 @@
+
+/* =====================================
+   1. RESET & GLOBAL
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #080808;
+    color: #f5f5f5;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: white;
+    color: black;
+}
+
+/* Background aesthetic */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            #252525,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            #181818,
+            transparent 40%
+        );
+}
+
+/* =====================================
+   2. NAVBAR
+===================================== */
+
+.header {
+    width: 100%;
+    min-height: 85px;
+    padding: 12px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(10, 10, 10, 0.95);
+    border-bottom: 1px solid #292929;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    backdrop-filter: blur(12px);
+}
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    filter: grayscale(100%);
+    transition: 0.4s;
+}
+
+.logo-img:hover {
+    filter: grayscale(0%);
+    transform: rotate(5deg) scale(1.08);
+    border-color: white;
+}
+
+/* NAVIGATION */
+
+.navbar-container ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+
+.navbar-container ul li a {
+    position: relative;
+
+    color: #999;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+/* HOVER EFFECT */
+
+.navbar-container ul li a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: white;
+    transition: 0.3s ease;
+}
+
+.navbar-container ul li a:hover {
+    color: white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.navbar-container ul li a:hover::after {
+    width: 100%;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 5%;
+    }
+
+    .navbar-container ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 20px;
+    }
+
+    .navbar-container ul li a {
+        font-size: 12px;
+    }
+
+    .logo-img {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* =====================================
+   3. HOME / HERO
+===================================== */
+
+.container {
+    min-height: 100vh;
+    padding: 120px 20px 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.container .box {
+    max-width: 900px;
+    animation: fadeUp 1.2s ease;
+}
+
+.container h1 {
+    font-size: clamp(40px, 8vw, 85px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -4px;
+
+    background: linear-gradient(
+        180deg,
+        #ffffff,
+        #777777
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.container h3 {
+    margin-top: 20px;
+
+    color: #888;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.container .box::after {
+    content: "LOST IN THOUGHTS • FOUND IN CODE";
+
+    display: block;
+    margin-top: 35px;
+
+    color: #555;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+/* =====================================
+   4. ABOUT
+===================================== */
+
+.kontol {
+    min-height: 80vh;
+    padding: 120px 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+.kontol .box {
+    width: 100%;
+    max-width: 850px;
+
+    padding: 45px 35px;
+
+    background: linear-gradient(
+        145deg,
+        #171717,
+        #0a0a0a
+    );
+
+    border: 1px solid #292929;
+    border-radius: 15px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+
+    transition: 0.4s;
+}
+
+.kontol .box:hover {
+    border-color: #666;
+    transform: translateY(-5px);
+}
+
+/* Profile */
+
+.kontol img {
+    display: block;
+
+    width: 160px;
+    height: 160px;
+
+    margin: 0 auto 30px;
+
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 2px solid #777;
+
+    box-shadow: 0 0 30px rgba(255,255,255,0.08);
+}
+
+.kontol h2 {
+    margin-bottom: 20px;
+
+    color: white;
+    font-size: clamp(21px, 4vw, 32px);
+    line-height: 1.4;
+}
+
+.kontol p {
+    color: #999;
+    font-size: 14px;
+    line-height: 2;
+}
+
+/* =====================================
+   5. SKILL
+===================================== */
+
+.bekicot {
+    padding: 110px 25px;
+    border-top: 1px solid #222;
+}
+
+.bekicot .box {
+    max-width: 1050px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.skill-items {
+    padding: 35px 25px;
+
+    background: linear-gradient(
+        145deg,
+        #181818,
+        #0b0b0b
+    );
+
+    border: 1px solid #292929;
+    border-radius: 12px;
+
+    transition: 0.35s;
+}
+
+.skill-items:hover {
+    transform: translateY(-8px);
+    border-color: #888;
+
+    box-shadow: 0 15px 35px rgba(255,255,255,0.05);
+}
+
+.skill-items h3 {
+    color: white;
+    font-size: 21px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+/* Percentage */
+
+.skill-items p {
+    position: relative;
+    width: 100%;
+
+    color: #aaa;
+    font-size: 12px;
+    font-weight: bold;
+
+    padding-bottom: 15px;
+}
+
+/* Background bar */
+
+.skill-items p::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 6px;
+
+    background: #333;
+    border-radius: 10px;
+}
+
+/* Progress bar */
+
+.skill-items p::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    height: 6px;
+
+    background: linear-gradient(
+        90deg,
+        #666,
+        #fff
+    );
+
+    border-radius: 10px;
+
+    animation: loadBar 1.5s ease;
+}
+
+/* Skill percentages */
+
+.skill-items:nth-child(1) p::after {
+    width: 75%;
+}
+
+.skill-items:nth-child(2) p::after {
+    width: 50%;
+}
+
+.skill-items:nth-child(3) p::after {
+    width: 2%;
+}
+
+.skill-items:nth-child(4) p::after {
+    width: 85%;
+}
+
+.skill-items:nth-child(5) p::after {
+    width: 75%;
+}
+
+.skill-items:nth-child(6) p::after {
+    width: 95%;
+}
+
+/* =====================================
+   6. PROJECT
+===================================== */
+
+.pentil {
+    padding: 110px 25px;
+    border-top: 1px solid #222;
+}
+
+.pentil .box {
+    max-width: 1050px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.itil {
+    min-height: 200px;
+    padding: 35px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        145deg,
+        #1b1b1b,
+        #090909
+    );
+
+    border: 1px solid #303030;
+    border-radius: 12px;
+
+    transition: 0.4s;
+}
+
+.itil:hover {
+    transform: translateY(-8px);
+    background: #222;
+    border-color: #888;
+
+    box-shadow: 0 15px 35px rgba(255,255,255,0.05);
+}
+
+.itil a {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.itil a:hover {
+    color: #999;
+}
+
+/* =====================================
+   7. HISTORY SCHOOL
+===================================== */
+
+.lonte {
+    padding: 110px 25px;
+    border-top: 1px solid #222;
+}
+
+.lonte .box {
+    max-width: 800px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    border-left: 2px solid #444;
+    padding-left: 30px;
+}
+
+.nisa {
+    position: relative;
+
+    padding: 25px 30px;
+
+    background: #111;
+    border: 1px solid #292929;
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+
+/* Timeline dot */
+
+.nisa::before {
+    content: "";
+
+    position: absolute;
+    left: -39px;
+    top: 30px;
+
+    width: 14px;
+    height: 14px;
+
+    background: white;
+    border: 3px solid #555;
+    border-radius: 50%;
+}
+
+.nisa:hover {
+    transform: translateX(7px);
+    border-color: #777;
+}
+
+.nisa h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.nisa p {
+    color: #888;
+    font-size: 13px;
+}
+
+/* =====================================
+   8. CONTACT
+===================================== */
+
+.bleguk {
+    min-height: 450px;
+    padding: 100px 10%;
+
+    background: linear-gradient(
+        135deg,
+        #080808,
+        #171717,
+        #050505
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border-top: 1px solid #292929;
+}
+
+.bleguk .box {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* TITLE */
+
+.bleguk h2 {
+    color: #ffffff;
+    font-size: 35px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* DESCRIPTION */
+
+.contact-desc {
+    color: #777;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+/* SOCIAL CONTAINER */
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* SOCIAL LINK */
+
+.social-link {
+    width: 220px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    color: #aaa;
+    background: #151515;
+
+    border: 1px solid #333;
+    border-radius: 12px;
+
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+
+    transition: 0.4s ease;
+}
+
+/* ICON */
+
+.social-link i {
+    font-size: 28px;
+    transition: 0.4s ease;
+}
+
+/* WHATSAPP HOVER */
+
+.whatsapp:hover {
+    color: white;
+    background: #252525;
+    border-color: white;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.08);
+}
+
+.whatsapp:hover i {
+    transform: scale(1.2);
+}
+
+/* INSTAGRAM HOVER */
+
+.instagram:hover {
+    color: white;
+    background: #252525;
+    border-color: white;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.08);
+}
+
+.instagram:hover i {
+    transform: scale(1.2);
+}
+
+/* GITHUB HOVER*/
+
+.github:hover {
+    color: white;
+    background: #252525;
+    border-color: white;
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.08);
+}
+
+.instagram:hover i {
+    transform: scale(1.2);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .bleguk h2 {
+        font-size: 26px;
+    }
+
+    .social-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-link {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* =====================================
+   9. FOOTER
+===================================== */
+
+.footer {
+    width: 100%;
+    padding: 30px 20px;
+
+    background: #050505;
+    border-top: 1px solid #292929;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* FOOTER TEXT */
+
+.footer span {
+    color: #777;
+    font-size: 13px;
+    font-weight: 500;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    transition: 0.4s ease;
+}
+
+/* HOVER EFFECT */
+
+.footer span:hover {
+    color: white;
+    letter-spacing: 5px;
+    text-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
+/* TOP LINE EFFECT */
+
+.footer::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 100px;
+    height: 1px;
+
+    background: white;
+    transform: translateX(-50%);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+    .footer {
+        padding: 25px 15px;
+    }
+
+    .footer span {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+}
+
+
+/* =====================================
+   10. ANIMATIONS
+===================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loadBar {
+    from {
+        width: 0;
+    }
+}
+
+/* =====================================
+   11. RESPONSIVE
+===================================== */
+
+@media (max-width: 750px) {
+
+    .navbar-container {
+        padding: 18px 12px;
+    }
+
+    .navbar-container ul {
+        gap: 13px 18px;
+    }
+
+    .navbar-container a {
+        font-size: 11px;
+    }
+
+    .container h1 {
+        letter-spacing: -2px;
+    }
+
+    .bekicot .box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pentil .box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kontol {
+        padding: 90px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container {
+        padding: 120px 20px 60px;
+    }
+
+    .container h1 {
+        font-size: 42px;
+        letter-spacing: -2px;
+    }
+
+    .container h3 {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .bekicot .box,
+    .pentil .box {
+        grid-template-columns: 1fr;
+    }
+
+    .kontol .box {
+        padding: 30px 18px;
+    }
+
+    .kontol img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .naira {
+        padding: 25px 18px;
+    }
+
+    .lonte .box {
+        padding-left: 25px;
+    }
+
+    .nisa::before {
+        left: -34px;
+    }
+
+    .footer span {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+}
